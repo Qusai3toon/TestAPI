@@ -1,16 +1,8 @@
 CREATE COMPUTE MODULE TestAPIFlow_Compute
-    CREATE FUNCTION Main() RETURNS BOOLEAN
-    BEGIN
-        -- Hardcoded sensitive data
-        DECLARE user_password CHAR CHARACTER 'aA@1234';  -- Use a common sensitive keyword
-
-        -- Unused variable
-        DECLARE unusedVariable CHAR CHARACTER 'This variable is unused';  -- Make it obvious
-
-        -- Hardcoded string
-        SET OutputRoot.JSON.Data.Result = 'RESULT';  -- Replace with a more generic constant
-
-        -- No error handling
-        RETURN TRUE;
-    END;
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.JSON.Data.Result = 'SUCCESS'; 
+		SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
+		RETURN TRUE;
+	END; 
 END MODULE;
