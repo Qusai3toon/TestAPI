@@ -1,8 +1,26 @@
 CREATE COMPUTE MODULE TestAPIFlow_Compute
-	CREATE FUNCTION Main() RETURNS BOOLEAN
-	BEGIN
-		SET OutputRoot.JSON.Data.Result = 'SUCCESS'; 
-		SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
-		RETURN TRUE;
-	END; 
+    CREATE FUNCTION Main() RETURNS BOOLEAN
+    BEGIN
+        -- Hardcoded sensitive data (security issue)
+        DECLARE password CHAR CHARACTER 'aA@1234'; 
+
+        -- Unused variable (code smell)
+        DECLARE unusedVariable CHAR CHARACTER 'This is not used';
+
+        -- Hardcoded strings instead of constants (code smell)
+        SET OutputRoot.JSON.Data.Result = 'SUCCESS'; 
+        SET OutputRoot.JSON.Data.Message = 'Operation completed successfully'; 
+
+        -- Inefficient or redundant logic
+        IF password = 'aA@1234' THEN
+            -- Log sensitive data (security issue)
+            SET OutputRoot.JSON.Data.Debug = password;
+        END IF;
+
+        -- Deprecated or inefficient function usage (example issue)
+        SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
+
+        -- No proper error handling (reliability issue)
+        RETURN TRUE;
+    END; 
 END MODULE;
