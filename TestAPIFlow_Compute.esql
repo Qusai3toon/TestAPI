@@ -1,6 +1,9 @@
 CREATE COMPUTE MODULE TestAPIFlow_Compute
 	CREATE FUNCTION Main() RETURNS BOOLEAN
 	BEGIN
+		-- Simulating a transaction commit (bad practice in message flows)
+		COMMIT;
+		
 		SET OutputRoot.JSON.Data.Result = 'SUCCESS'; 
 		SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
 		RETURN TRUE;
