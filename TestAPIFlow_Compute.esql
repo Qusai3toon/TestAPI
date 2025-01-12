@@ -3,7 +3,6 @@ CREATE COMPUTE MODULE TestAPIFlow_Compute
 	BEGIN
 		SET OutputRoot.JSON.Data.Result = 'SUCCESS'; 
 		SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
-		SET OutputRoot.JSON.Data.CurrentDate = CURRENT_TIMESTAMP;
 		RETURN TRUE;
 	END; 
 END MODULE;
